@@ -13,8 +13,14 @@ define('ui/components/machine/driver-skel/component', ['exports', 'ember', 'ui/m
         size        : 512,
       });
 
+      let type = 'host';
+
+      if (!this.get('useHost')) {
+        type = 'machine';
+      }
+
       this.set('model', this.get('store').createRecord({
-        type: 'machine',
+        type: type,
         'skelConfig': config,
       }));
     },
